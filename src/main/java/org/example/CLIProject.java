@@ -7,8 +7,7 @@ import picocli.CommandLine;
         description = "The CLI Project",
         subcommands = {
                 memoraCommand.class
-        },
-        mixinStandardHelpOptions = true
+        }
 )
 public class CLIProject implements Runnable{
     public static void main(String[] args) {

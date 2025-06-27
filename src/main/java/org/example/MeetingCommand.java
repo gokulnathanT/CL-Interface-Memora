@@ -80,13 +80,14 @@ public class MeetingCommand implements Runnable{
         if(info){
             System.out.println("\nNever miss a sync-up again\n" +
                     "fixMeet      -> Fix meetings with its context \n" +
-                    "getMeets     -> Get meetings \n\n" +
+                    "--getMeets   -> Get meetings \n" +
+                    "--cancel     -> Cancel a meeting\n"+
                     "Track of meeting ");
             return;
         }
         else if(getMeets){
             try{
-                URL url=new URL("http://localhost:8082/api/meet/getAllNotes");
+                URL url=new URL("http://localhost:8082/api/meet/getAllMeets");
                 HttpURLConnection connection=(HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("Content-Type","Application/json");

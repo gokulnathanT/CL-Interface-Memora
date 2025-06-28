@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 
 @CommandLine.Command(name="bookmark",subcommands = {BookmarkCommand.AddBookmark.class}, description = "-Save helpful links and websites")
@@ -20,6 +21,7 @@ public class BookmarkCommand implements Runnable{
         int id;
         String title;
         String url;
+        String createdAt;
     }
     @CommandLine.Option(names={"--info","--I"})
     private boolean info;

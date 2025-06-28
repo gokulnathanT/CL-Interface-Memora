@@ -17,15 +17,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.Buffer;
 import java.security.cert.Certificate;
+import java.time.LocalDate;
 import java.util.List;
 
 @CommandLine.Command(name="task",description = "-Manage to-do list and get things done")
 public class TaskManager implements Runnable{
 
-    class Task{
+    static class Task{
         int id;
         String content;
         String status;
+        String createdAt;
     }
     @CommandLine.Option(names={"--info","--I"})
     private boolean info;
@@ -162,10 +164,10 @@ public class TaskManager implements Runnable{
         else{
             if (info) {
                 System.out.println("\n\nEffortlessly organize your day!\n" +
-                        "--addTask    -> Add tasks \n" +
-                        "--Pending   -> Get tasks to be completed\n" +
+                        "--addTask     -> Add tasks \n" +
+                        "--Pending     -> Get tasks to be completed\n" +
                         "--Completed   -> Get tasks that are completed\n" +
-                        "--Update  -> Mark task as completed(with ID)\n\n" +
+                        "--Update      -> Mark task as completed(with ID)\n\n" +
                         "Stay productive by tracking tasks");
                 return;
             }

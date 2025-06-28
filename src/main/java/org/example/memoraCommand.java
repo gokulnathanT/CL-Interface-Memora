@@ -6,7 +6,7 @@ import picocli.CommandLine;
 ,subcommands = {
         TaskManager.class, ConfigCommand.class,
         NoteCommand.class, MeetingCommand.class,
-        BookmarkCommand.class,
+        BookmarkCommand.class,WeeklyReport.class
 
 })
 public class memoraCommand implements Runnable{
@@ -23,6 +23,8 @@ public class memoraCommand implements Runnable{
         System.out.println("=================");
         if(info){
             System.out.println("Memora is a personal assistant within Command Line Interface (CLI) !!");
+            System.out.println();
+            System.out.println("Add --info after each features to get command's properties");
         }
         else if(help){
             System.out.println("Commands:\n"+
@@ -34,6 +36,6 @@ public class memoraCommand implements Runnable{
             return;
         }
         System.out.println("Start by giving command");
-        System.out.println("              -- to get commands ");
+        System.out.println("              --help  to get commands ");
     }
 }

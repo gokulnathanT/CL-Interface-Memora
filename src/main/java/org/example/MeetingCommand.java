@@ -21,6 +21,7 @@ public class MeetingCommand implements Runnable{
         int id;
         String date;
         String context;
+        LocalDate createdAt;
     }
     @CommandLine.Option(names={"--info","--I"})
     private boolean info;

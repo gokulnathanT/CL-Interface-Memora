@@ -2,6 +2,7 @@ package org.example;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.example.Command.*;
 import picocli.CommandLine;
 
 import java.io.BufferedReader;
@@ -16,7 +17,7 @@ import java.util.List;
 ,subcommands = {
         TaskManager.class, ConfigCommand.class,
         NoteCommand.class, MeetingCommand.class,
-        BookmarkCommand.class,WeeklyReport.class
+        BookmarkCommand.class, WeeklyReport.class
 
 })
 public class memoraCommand implements Runnable{

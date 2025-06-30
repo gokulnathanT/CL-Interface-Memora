@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Command;
 
 
 import com.google.gson.Gson;
@@ -17,11 +17,11 @@ import java.util.List;
 @CommandLine.Command(name="meeting",subcommands = {MeetingCommand.FixMeeting.class}, description = "-Schedule and track meetings or events")
 public class MeetingCommand implements Runnable{
 
-    class Meet{
-        int id;
-        String date;
-        String context;
-        String createdAt;
+    public class Meet{
+        public int id;
+        public String date;
+        public String context;
+        public String createdAt;
     }
     @CommandLine.Option(names={"--info","--I"})
     private boolean info;

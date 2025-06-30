@@ -1,23 +1,16 @@
-package org.example;
+package org.example.Command;
 
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import picocli.CommandLine;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLPeerUnverifiedException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.Buffer;
-import java.security.cert.Certificate;
-import java.time.LocalDate;
 import java.util.List;
 
 @CommandLine.Command(name="task",description = "-Manage to-do list and get things done")

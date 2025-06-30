@@ -1,17 +1,15 @@
-package org.example;
+package org.example.Command;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import picocli.CommandLine;
 
-import java.awt.print.Book;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.List;
 
 @CommandLine.Command(name="bookmark",subcommands = {BookmarkCommand.AddBookmark.class}, description = "-Save helpful links and websites")

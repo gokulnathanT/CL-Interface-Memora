@@ -69,6 +69,8 @@ memora load bookmark --getUrls
 memora load report --WeekSummary "Report_2025_Week27"
 ```
 
+**Backend**
+-https://github.com/gokulnathanT/CLI-Memora-Backend
 
 ## 🙋‍♂️ Connect with Me
 

@@ -10,7 +10,6 @@ Memora is a powerful **Command Line Interface (CLI)** personal productivity assi
 - 📅 Meeting Scheduler – Fix, view, and cancel your upcoming meetings
 - 🔖 Bookmark Saver – Save useful links and access them easily
 - 📊 Weekly Report Generator – Compile weekly activity summaries in Markdown
-- 🛠️ Configuration – Manage vault settings and environment options
 - 🔗 Obsidian Integration – Open generated reports in Obsidian automatically
 
 

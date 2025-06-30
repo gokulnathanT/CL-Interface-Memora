@@ -1,73 +1,108 @@
+# 🧠 Memora Backend – Spring Boot REST API
 
-# 🧠 Memora CLI
-Memora is a powerful **Command Line Interface (CLI)** personal productivity assistant that helps you manage your **tasks**, **notes**, **meetings**, and **bookmarks**, along with the ability to generate **weekly productivity reports** — all from your terminal.
+The **Memora Backend** is a lightweight, modular RESTful API service built using Spring Boot. It supports a productivity-focused CLI frontend by handling operations like:
 
+- ✅ Task Management  
+- 🗒️ Notes Keeper  
+- 📅 Meeting Scheduling  
+- 🔖 Bookmarking  
 
-## Features
+Each module exposes a set of clean, JSON-based endpoints for CRUD-like operations and activity summaries.
 
-- ✅ Task Manager – Add, view, and update your daily tasks
-- 🗒️ Notes Keeper – Capture ideas, thoughts, and technical notes
-- 📅 Meeting Scheduler – Fix, view, and cancel your upcoming meetings
-- 🔖 Bookmark Saver – Save useful links and access them easily
-- 📊 Weekly Report Generator – Compile weekly activity summaries in Markdown
-- 🔗 Obsidian Integration – Open generated reports in Obsidian automatically
+---
 
+## 🚀 Features
 
+- Add, update, and view daily tasks
+- Create and retrieve notes
+- Schedule and cancel meetings
+- Store and manage helpful bookmarks
+- Fetch weekly activity data for reports
 
-## Installation
+---
 
-**Prerequisites**
-- Java 17+ or GraalVM 21+
+## 📦 Tech Stack
+
+- Java 21 / GraalVM Compatible  
+- Spring Boot 3+  
+- RESTful APIs (JSON)  
 - Maven
-- Internet connection (for Maven dependency fetching)
 
-**Build**
- 
+---
 
- ```bash
- mvn clean install
+## 👽 API Reference
+
+### ✅ Tasks API – `/api/task`
+
+| Method | Endpoint          | Description                            |
+|--------|-------------------|----------------------------------------|
+| POST   | `/addTask`        | Add a new task                         |
+| GET    | `/getPending`     | Fetch pending (incomplete) tasks       |
+| GET    | `/getCompleted`   | Fetch completed tasks                  |
+| POST   | `/updateTask`     | Mark a task as completed (pass `id`)   |
+| GET    | `/Activity`       | Get tasks from the past 7 days         |
+
+**Sample Payload – Add Task**
+```json
+{
+  "content": "Review pull requests",
+  "status": "PENDING"
+}
+```
+### ✅ Notes API – `/api/note`
+
+| Method | Endpoint          | Description                            |
+|--------|-------------------|----------------------------------------|
+| POST   | `/addNote`        | Add a new note                         |
+| GET    | `/getNote/{id}`     | Get a note by ID        |
+| GET    | `/getAllNotes`   | Fetch all notes                  |
+| GET   | `/Activity`     | Get notes from the past 7 days   |
+
+**Sample Payload – Add Note**
+```json
+{
+  "title": "Meeting Recap",
+  "content": "Discussed Q3 roadmap and deliverables"
+}
 ```
 
-**Run**
- ```bash
- java -cp "target/classes;target/dependency/*" org.example.CLIProject memora
+### ✅ Meeting API – `/api/meet`
+
+| Method | Endpoint          | Description                            |
+|--------|-------------------|----------------------------------------|
+| POST   | `/addMeeting`        | Schedule a new meeting                        |
+| GET    | `/getAllMeets`     | Fetch all scheduled meetings        |
+| GET    | `/getTodayMeetings`   | Fetch meetings scheduled for today                  |
+| POST   | `/updateMeet`     | Cancel a meeting (pass id)   |
+
+**Sample Payload – Add Meet**
+```json
+{
+  "context": "Product Sync-Up",
+  "date": "2025-06-30"
+}
 ```
 
-## CLI Execution
 
+### ✅ Bookmark API – `/api/bookmark`
 
-**Task Manager**
-```bash
-memora load task --addTask "Review pull requests"
-memora load task --Pending
-memora load task --Completed
-memora load task --Update 3
+| Method | Endpoint          | Description                            |
+|--------|-------------------|----------------------------------------|
+| POST   | `/addUrl`        | Add a new bookmark               |
+| GET    | `/getUrls`     | Fetch all saved bookmarks      |
+| POST    | `/deleteUrl`   | Delete a bookmark by ID                  |
+| GET   | `/Activity`     | Get bookmarks from the past 7 days   |
 
-```
-**Notes Keeper**
-```bash
-memora load notes add --title "Meeting Recap" --content "Discussed Q3 goals and deadlines"
-memora load notes --allNotes
-memora load notes --getNote 1
-
-```
-**Meeting Scheduler**
-```bash
-memora load meeting fixMeet --date 2025-06-30 --context "Obsidian Workflow Session"
-memora load meeting --getMeets
-memora load meeting --cancel 2
+**Sample Payload – Add Bookmark**
+```json
+{
+  "title": "Java Docs",
+  "url": "https://docs.oracle.com/en/java/"
+}
 
 ```
-**Bookmarks**
-```bash
-memora load bookmark add --title "Java Docs" --url "https://docs.oracle.com/en/java/"
-memora load bookmark --getUrls
 
-```
-**Weekly Report**
-```bash
-memora load report --WeekSummary "Report_2025_Week27"
-```
+
 
 **Backend**
 -https://github.com/gokulnathanT/CLI-Memora-Backend

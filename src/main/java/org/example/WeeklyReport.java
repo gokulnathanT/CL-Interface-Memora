@@ -112,8 +112,9 @@ public class WeeklyReport  implements  Runnable{
                     }
                 }
                 fw.newLine();
-
+                fw.newLine();
                 fw.write("## ⏳ Tasks Pending");
+                fw.newLine();
                 fw.newLine();
                 if (tasks.stream().noneMatch(t -> "PENDING".equals(t.status))) {
                     fw.write("- No pending tasks!");
@@ -125,8 +126,9 @@ public class WeeklyReport  implements  Runnable{
                     }
                 }
                 fw.newLine();
-
+                fw.newLine();
                 fw.write("## 🗒️ Notes Captured");
+                fw.newLine();
                 fw.newLine();
                 if (notes.isEmpty()) {
                     fw.write("- No notes recorded this week.");
@@ -136,8 +138,9 @@ public class WeeklyReport  implements  Runnable{
                     fw.newLine();
                 }
                 fw.newLine();
-
+                fw.newLine();
                 fw.write("## 🔖 Bookmarks Added");
+                fw.newLine();
                 fw.newLine();
                 if (bookmarks.isEmpty()) {
                     fw.write("- No bookmarks saved.");

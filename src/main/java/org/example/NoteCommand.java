@@ -60,7 +60,7 @@ public class NoteCommand implements Runnable{
                 Gson gson=new Gson();
                 NoteCommand.Note note=gson.fromJson(response.toString(), NoteCommand.Note.class);
                 if(responseCode==200){
-                    System.out.println("Notes added : \""+note.title);
+                    System.out.println("Notes added : "+note.title);
                 }
                 else {
                     System.out.println("Unfortunately note cannot be added !");
@@ -76,16 +76,24 @@ public class NoteCommand implements Runnable{
 
     @Override
     public void run() {
+        System.out.println();
         System.out.println("==================================");
-        System.out.println("|           Notes Keeper         |");
+        System.out.println("          NOTES KEEPER");
         System.out.println("==================================");
-        if(info){
-            System.out.println("\nKeep your notes wise !\n" +
-                    "add       -> Add Notes \n" +
-                    "getNote   -> Get notes \n\n" +
-                    "Stay productive by organizing notes");
+        System.out.println();
+
+        if (info) {
+            System.out.println("Keep your notes wise and organized!");
+            System.out.println();
+            System.out.println("Options:");
+            System.out.println("  add         : Add a new note");
+            System.out.println("  --allNotes  : View all saved notes");
+            System.out.println("  --getNote   : Fetch a specific note by ID");
+            System.out.println();
+            System.out.println("Stay productive by managing your ideas effectively.");
             return;
         }
+
         else if(noteId!=0){
             try {
                 System.out.println("Notes ");
@@ -107,8 +115,8 @@ public class NoteCommand implements Runnable{
                 Gson gson=new Gson();
                 NoteCommand.Note note=gson.fromJson(response.toString(), NoteCommand.Note.class);
                 if(responseCode==200){
-                    System.out.println("Title : \""+note.title);
-                    System.out.println("Content : \""+note.content);
+                    System.out.println("Title : "+note.title);
+                    System.out.println("Content : "+note.content);
                 }
                 else {
                     System.out.println("Unfortunately note cannot be fetched !");

@@ -8,6 +8,7 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,17 +25,21 @@ public class WeeklyReport  implements  Runnable{
 
     @Override
     public void run() {
-        System.out.println("==================================");
-        System.out.println("|           Weekly Report        |");
-        System.out.println("==================================");
+        System.out.println();
+        System.out.println("============================================");
+        System.out.println("              Weekly Report");
+        System.out.println("============================================");
+        System.out.println();
 
-        if(info){
-            System.out.println("\n\nGet productivity report in ease!\n" +
-                    "--WeekSummary  -> Weekly report on the activities \n\n" +
-
-                    "Track and document your progress");
+        if (info) {
+            System.out.println("Get productivity report in ease!");
+            System.out.println("--------------------------------------------");
+            System.out.println("  --WeekSummary   : Weekly report of the activities");
+            System.out.println();
+            System.out.println("Track and document your progress effectively.");
             return;
         }
+
         else if(report!=null){
             try{
                 //  Content 1 :
@@ -87,7 +92,7 @@ public class WeeklyReport  implements  Runnable{
                 Gson gson3=new Gson();
                 Type listType3=new TypeToken<List<BookmarkCommand.Bookmark>>(){}.getType();
                 List<BookmarkCommand.Bookmark> bookmarks=gson3.fromJson(weekActivity3,listType3);
-                String fileName="D:\\Java_Fullstack\\MemoraReport\\"+report+".md";
+                String fileName="D:\\Java_Fullstack\\MemoraReports\\"+report+".md";
                 BufferedWriter fw = new BufferedWriter(new FileWriter(fileName));
                 fw.write("# 📝 Weekly Activity Summary");
                 fw.newLine();
@@ -148,10 +153,25 @@ public class WeeklyReport  implements  Runnable{
 
                 fw.flush();
                 fw.close();
+                String file=fileName.substring(32);
+                System.out.println();
+                System.out.println("--------------------------------------------");
+                System.out.println("Report created successfully!");
+                System.out.println("--------------------------------------------");
+                System.out.println("File Path  : " + fileName);
+                System.out.println("File Name  : " + fileName.substring(fileName.lastIndexOf("\\") + 1));
+                System.out.println();
+                String path= "D:\\Java_Fullstack\\MemoraReport\\Memora Reports\\"+fileName.substring(32);
+                String uri = "obsidian://open?vault=MemoraReports&file=" + URLEncoder.encode(path, "UTF-8");
 
-                System.out.println("Report created at : "+fileName);
-                System.out.println("File Name : "+fileName.substring(31));
 
+                String command = "cmd /c start \"\" \""+uri+"\"";
+                try{
+                    Runtime.getRuntime().exec(command);
+                }
+                catch (IOException e){
+                    System.out.println("Failed to open Obsidian !");
+                }
                 System.out.println();
             } catch (IOException e) {
                 System.out.println("Unfortunately report cannot be generated !");

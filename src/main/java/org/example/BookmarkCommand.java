@@ -74,18 +74,24 @@ public class BookmarkCommand implements Runnable{
 
     @Override
     public void run() {
-        System.out.println("Bookmark for storing URL");
-        System.out.println("==================================");
-        System.out.println("|        Bookmark Url            |");
-        System.out.println("==================================");
-        if(info){
-            System.out.println("\nKeep a hold on sites\n" +
-                    "addUrl      -> Fix meetings with its context \n" +
-                    "getUrls     -> Get meetings \n\n" +
-                    "delete      -> Delete Urls by ID"+
-                    "Remember sites for revisit ");
+        System.out.println();
+        System.out.println("=====================================");
+        System.out.println("        BOOKMARK URL MANAGER");
+        System.out.println("=====================================");
+        System.out.println();
+
+        if (info) {
+            System.out.println("Keep track of useful websites effortlessly!");
+            System.out.println();
+            System.out.println("Options:");
+            System.out.println("  addUrl       : Save a website with a title and link");
+            System.out.println("  --getUrls    : View all saved bookmarks");
+            System.out.println("  --delete     : Delete a bookmark by ID");
+            System.out.println();
+            System.out.println("~ Never lose track of your favorite sites again.");
             return;
         }
+
         else if(getUrls){
             try{
                 URL url=new URL("http://localhost:8082/api/bookmark/getUrls");
@@ -107,7 +113,7 @@ public class BookmarkCommand implements Runnable{
                 System.out.println("---Id : title -> URL---");
                 System.out.println();
                 for(BookmarkCommand.Bookmark bookmark:bookmarks){
-                    System.out.println("    "+bookmark.id+" : "+bookmark.title+" -> "+bookmark.url);
+                    System.out.println("    "+bookmark.id+" : "+bookmark.title+"      -> "+bookmark.url);
                 }
                 br.close();
             }catch (IOException e){

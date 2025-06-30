@@ -42,10 +42,26 @@ public class TaskManager implements Runnable{
     private int completeTask;
 
     public void run() {
+        System.out.println();
         System.out.println("==================================");
-        System.out.println("|           Task Manager         |");
+        System.out.println("|         TASK MANAGER           |");
         System.out.println("==================================");
-        if (task != null) {
+        System.out.println();
+
+        if (info) {
+            System.out.println("Effortlessly organize your day!");
+            System.out.println();
+            System.out.println("Options:");
+            System.out.println("  --addTask     : Add a new task");
+            System.out.println("  --Pending     : List all pending tasks");
+            System.out.println("  --Completed   : View completed tasks");
+            System.out.println("  --Update      : Mark a task as completed by ID");
+            System.out.println();
+            System.out.println("~ Stay on track and boost productivity.");
+            return;
+        }
+
+        else if (task != null) {
             try {
                 URL url = new URL("http://localhost:8082/api/task/addTask");
                 HttpURLConnection connection =(HttpURLConnection) url.openConnection();
@@ -162,15 +178,7 @@ public class TaskManager implements Runnable{
             }
         }
         else{
-            if (info) {
-                System.out.println("\n\nEffortlessly organize your day!\n" +
-                        "--addTask     -> Add tasks \n" +
-                        "--Pending     -> Get tasks to be completed\n" +
-                        "--Completed   -> Get tasks that are completed\n" +
-                        "--Update      -> Mark task as completed(with ID)\n\n" +
-                        "Stay productive by tracking tasks");
-                return;
-            }
+
 
             System.out.println("       '--info' to know commands");
         }

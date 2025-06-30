@@ -21,7 +21,7 @@ public class MeetingCommand implements Runnable{
         int id;
         String date;
         String context;
-        LocalDate createdAt;
+        String createdAt;
     }
     @CommandLine.Option(names={"--info","--I"})
     private boolean info;
@@ -75,17 +75,24 @@ public class MeetingCommand implements Runnable{
     }
     @Override
     public void run() {
+        System.out.println();
         System.out.println("==================================");
-        System.out.println("|           Meeting Tracker      |");
+        System.out.println("|        MEETING TRACKER         |");
         System.out.println("==================================");
-        if(info){
-            System.out.println("\nNever miss a sync-up again\n" +
-                    "fixMeet      -> Fix meetings with its context \n" +
-                    "--getMeets   -> Get meetings \n" +
-                    "--cancel     -> Cancel a meeting\n"+
-                    "Track of meeting ");
+        System.out.println();
+
+        if (info) {
+            System.out.println("Never miss a sync-up again.");
+            System.out.println();
+            System.out.println("Options:");
+            System.out.println("  fixMeet     : Schedule a new meeting with a date and context");
+            System.out.println("  --getMeets  : View upcoming meetings");
+            System.out.println("  --cancel    : Cancel a scheduled meeting");
+            System.out.println();
+            System.out.println("~ Keep track of all your important meetings.");
             return;
         }
+
         else if(getMeets){
             try{
                 URL url=new URL("http://localhost:8082/api/meet/getAllMeets");
